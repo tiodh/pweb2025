@@ -1,418 +1,425 @@
-# Tugas Pemrograman Website 2025
+# Web Programming Assignment 2025
 
-## Pembagian Tugas
-| No | Nama Tabel                          | Dikerjakan Oleh                           |
-| -- | ----------------------------------- | ----------------------------------------- |
-| 1  | users                               | — (default Laravel)                       |
-| 2  | universitas                         | **Tio Dharmawan**                         |
-| 3  | fakultas                            | **MICHAEL MUHAMMAD YUDANANTA**            |
-| 4  | jurusan                             | **HASY ARVIN AHMAD**                      |
-| 5  | prodi                               | **MOCHAMMAD RYAN ALVIANSYAH**             |
-| 6  | dosen                               | **REGINA DIVA OLINDIA PUTRI**             |
-| 7  | mahasiswa                           | **DAFFA GASTIA PRABASWARA**               |
-| 8  | mata_kuliah                         | **ADAM RIZQI FIRDAUSI**                   |
-| 9  | kelas                               | **ACHMAD NUHAN T**                        |
-| 10 | dosen_pengampu                      | **MUHAMAD ROHMAD HIDAYAT**                |
-| 11 | gedung                              | **ADIRA FATIH ROMADHAN**                  |
-| 12 | ruangan                             | **PRADITYA SAVILLA YOVIEANDRA**           |
-| 13 | jadwal                              | **KAYSA RAFA ADITYA PUTRA NEGARA**        |
-| 14 | registrasi                          | **MUHAMMAD SALMAN GHIFFARY HIDAYATULLAH** |
-| 15 | krs                                 | **AHMAD ADAM SAIFUL MILA**                |
-| 16 | nilai                               | **GUNAWAN WICAKSONO**                     |
-| 17 | tahun_ajaran                        | **YURI WICAKSONO**                        |
-| 18 | semester                            | **ARUL PRAMANA BAHARI**                   |
-| 19 | beasiswa                            | **ACHMAD FAIEZ JATMIKO**                  |
-| 20 | penerima_beasiswa                   | **MOHAMMAD ALFIN KAMAL SAPUTRA**          |
-| 21 | biaya_kuliah                        | **AHMAD ZAFARELL ZOUVAN DHANI**           |
-| 22 | pembayaran                          | **RADITYA FAHRIZAL DIANDRA**              |
-| 23 | pengumuman                          | **ADITIYA RIFKY ARYA PUTRA**              |
-| 24 | akun_dosen                          | **ATHA RIFYAN ADYFY**                     |
-| 25 | akun_mahasiswa                      | **MUHAMMAD FAJRUL FALAH**                 |
-| 26 | bimbingan_akademik                  | **NASRULLOH TRI RAMADHANI**               |
-| 27 | skripsi                             | **MOHAMAD ARYA FAHREZA HIDAYAD**          |
-| 28 | pembimbing_skripsi                  | **MUHAMAD RIZQI RAMADHANI**               |
-| 29 | sidang_skripsi                      | **MUHAMMAD RAIHAN RAMDHANI**              |
-| 30 | penguji_skripsi                     | **SYADID CHOIRI**                         |
-| 31 | alumni                              | **MUHAMMAD NIZAR WICAKSONO**              |
-| 32 | perusahaan                          | **AGUNG KURNIAWAN**                       |
-| 33 | lowongan_kerja                      | **MOCHAMMAD REIKHAN ZAKY**                |
-| 34 | lamaran_pekerjaan                   | **CHRISTIAN EVAN RAHARJO**                |
-| 35 | organisasi_mahasiswa                | **DARREL FAWWAZ AGATHON**                 |
-| 36 | anggota_organisasi                  | **AIRELL FITRAHAVILA**                    |
-| 37 | prestasi                            | **ERGA PRATAMA**                          |
-| 38 | pelatihan                           | **KHOSYATULLAH AHMAD**                    |
-| 39 | peserta_pelatihan                   | **YURISSANDY AL AHAM PRATAMA**            |
-| 40 | log_aktivitas                       | **ADJASTYA BUDI ADJIE SYAHPUTRA**         |
-| 41 | riwayat_perubahan_data              | **M. AGIL ASSHOFI**                       |
+## Initial Setup
+1. git clone https://github.com/tiodh/pweb2025.git  
+2. composer install  
+3. php artisan migrate  
+4. php artisan db:seed
+5. npm run build
 
-# ERD SIMPT
+## Task Distribution
+| No | Table Name                         | Assigned To                               |
+| -- | ---------------------------------- | ----------------------------------------- |
+| 1  | users                              | — (Laravel default)                       |
+| 2  | universities                       | **Tio Dharmawan**                         |
+| 3  | faculties                          | **MICHAEL MUHAMMAD YUDANANTA**            |
+| 4  | departments                        | **HASY ARVIN AHMAD**                      |
+| 5  | study_programs                     | **MOCHAMMAD RYAN ALVIANSYAH**             |
+| 6  | lecturers                          | **REGINA DIVA OLINDIA PUTRI**             |
+| 7  | students                           | **DAFFA GASTIA PRABASWARA**               |
+| 8  | courses                            | **ADAM RIZQI FIRDAUSI**                   |
+| 9  | classes                            | **ACHMAD NUHAN T**                        |
+| 10 | teaching_lecturers                 | **MUHAMAD ROHMAD HIDAYAT**                |
+| 11 | buildings                          | **ADIRA FATIH ROMADHAN**                  |
+| 12 | rooms                              | **PRADITYA SAVILLA YOVIEANDRA**           |
+| 13 | schedules                          | **KAYSA RAFA ADITYA PUTRA NEGARA**        |
+| 14 | registrations                      | **MUHAMMAD SALMAN GHIFFARY HIDAYATULLAH** |
+| 15 | course_registrations (KRS)         | **AHMAD ADAM SAIFUL MILA**                |
+| 16 | grades                             | **GUNAWAN WICAKSONO**                     |
+| 17 | academic_years                     | **YURI WICAKSONO**                        |
+| 18 | semesters                          | **ARUL PRAMANA BAHARI**                   |
+| 19 | scholarships                       | **ACHMAD FAIEZ JATMIKO**                  |
+| 20 | scholarship_recipients             | **MOHAMMAD ALFIN KAMAL SAPUTRA**          |
+| 21 | tuition_fees                       | **AHMAD ZAFARELL ZOUVAN DHANI**           |
+| 22 | payments                           | **RADITYA FAHRIZAL DIANDRA**              |
+| 23 | announcements                      | **ADITIYA RIFKY ARYA PUTRA**              |
+| 24 | lecturer_accounts                  | **ATHA RIFYAN ADYFY**                     |
+| 25 | student_accounts                   | **MUHAMMAD FAJRUL FALAH**                 |
+| 26 | academic_guidance                  | **NASRULLOH TRI RAMADHANI**               |
+| 27 | theses                             | **MOHAMAD ARYA FAHREZA HIDAYAD**          |
+| 28 | thesis_supervisors                 | **MUHAMAD RIZQI RAMADHANI**               |
+| 29 | thesis_defenses                    | **MUHAMMAD RAIHAN RAMDHANI**              |
+| 30 | thesis_examiners                   | **SYADID CHOIRI**                         |
+| 31 | alumni                             | **MUHAMMAD NIZAR WICAKSONO**              |
+| 32 | companies                          | **AGUNG KURNIAWAN**                       |
+| 33 | job_vacancies                      | **MOCHAMMAD REIKHAN ZAKY**                |
+| 34 | job_applications                   | **CHRISTIAN EVAN RAHARJO**                |
+| 35 | student_organizations              | **DARREL FAWWAZ AGATHON**                 |
+| 36 | organization_members               | **AIRELL FITRAHAVILA**                    |
+| 37 | achievements                       | **ERGA PRATAMA**                          |
+| 38 | trainings                          | **KHOSYATULLAH AHMAD**                    |
+| 39 | training_participants              | **YURISSANDY AL AHAM PRATAMA**            |
+| 40 | activity_logs                      | **ADJASTYA BUDI ADJIE SYAHPUTRA**         |
+| 41 | data_change_history                | **M. AGIL ASSHOFI**                       |
+
+# SIMPT ERD
 
 ## 1. users
 - id (PK)
-- name
-- email
-- password
-- role (admin/dosen/mahasiswa)
-- created_at
-- updated_at
+- name  
+- email  
+- password  
+- role (admin/lecturer/student)  
+- created_at  
+- updated_at  
 
-## 2. universitas
+## 2. universities
 - id (PK)
-- nama
-- alamat
-- telepon
-- email
-- created_at
-- updated_at
+- name  
+- address  
+- phone  
+- email  
+- created_at  
+- updated_at  
 
-## 3. fakultas
+## 3. faculties
 - id (PK)
-- universitas_id (FK → universitas.id)
-- nama
-- dekan
-- kode_fakultas
-- created_at
-- updated_at
+- university_id (FK → universities.id)
+- name  
+- dean  
+- faculty_code  
+- created_at  
+- updated_at  
 
-## 4. jurusan
+## 4. departments
 - id (PK)
-- fakultas_id (FK → fakultas.id)
-- nama
-- kode_jurusan
-- ketua_jurusan
-- created_at
-- updated_at
+- faculty_id (FK → faculties.id)
+- name  
+- department_code  
+- head_of_department  
+- created_at  
+- updated_at  
 
-## 5. prodi
+## 5. study_programs
 - id (PK)
-- jurusan_id (FK → jurusan.id)
-- nama
-- jenjang
-- akreditasi
-- created_at
-- updated_at
+- department_id (FK → departments.id)
+- name  
+- degree_level  
+- accreditation  
+- created_at  
+- updated_at  
 
-## 6. dosen
+## 6. lecturers
 - id (PK)
-- nip
-- nama
-- email
-- prodi_id (FK → prodi.id)
-- created_at
-- updated_at
+- nip  
+- name  
+- email  
+- study_program_id (FK → study_programs.id)
+- created_at  
+- updated_at  
 
-## 7. mahasiswa
+## 7. students
 - id (PK)
-- nim
-- nama
-- angkatan
-- prodi_id (FK → prodi.id)
-- created_at
-- updated_at
+- nim  
+- name  
+- cohort_year  
+- study_program_id (FK → study_programs.id)
+- created_at  
+- updated_at  
 
-## 8. mata_kuliah
+## 8. courses
 - id (PK)
-- kode_mk
-- nama
-- sks
-- prodi_id (FK → prodi.id)
-- created_at
-- updated_at
+- course_code  
+- name  
+- credits  
+- study_program_id (FK → study_programs.id)
+- created_at  
+- updated_at  
 
-## 9. kelas
+## 9. classes
 - id (PK)
-- mata_kuliah_id (FK → mata_kuliah.id)
-- nama_kelas
-- semester
-- tahun_ajaran
-- created_at
-- updated_at
+- course_id (FK → courses.id)
+- class_name  
+- semester  
+- academic_year  
+- created_at  
+- updated_at  
 
-## 10. dosen_pengampu
+## 10. teaching_lecturers
 - id (PK)
-- dosen_id (FK → dosen.id)
-- kelas_id (FK → kelas.id)
-- status_pengampu
-- keterangan
-- created_at
-- updated_at
+- lecturer_id (FK → lecturers.id)
+- class_id (FK → classes.id)
+- teaching_status  
+- remarks  
+- created_at  
+- updated_at  
 
-## 11. gedung
+## 11. buildings
 - id (PK)
-- nama
-- lokasi
-- jumlah_lantai
-- kode_gedung
-- created_at
-- updated_at
+- name  
+- location  
+- floors  
+- building_code  
+- created_at  
+- updated_at  
 
-## 12. ruangan
+## 12. rooms
 - id (PK)
-- gedung_id (FK → gedung.id)
-- kode_ruangan
-- kapasitas
-- jenis_ruangan
-- created_at
-- updated_at
+- building_id (FK → buildings.id)
+- room_code  
+- capacity  
+- room_type  
+- created_at  
+- updated_at  
 
-## 13. jadwal
+## 13. schedules
 - id (PK)
-- kelas_id (FK → kelas.id)
-- ruangan_id (FK → ruangan.id)
-- hari
-- jam_mulai
-- jam_selesai
-- created_at
-- updated_at
+- class_id (FK → classes.id)
+- room_id (FK → rooms.id)
+- day  
+- start_time  
+- end_time  
+- created_at  
+- updated_at  
 
-## 14. registrasi
+## 14. registrations
 - id (PK)
-- mahasiswa_id (FK → mahasiswa.id)
-- semester
-- tahun_ajaran
-- status
-- created_at
-- updated_at
+- student_id (FK → students.id)
+- semester  
+- academic_year  
+- status  
+- created_at  
+- updated_at  
 
-## 15. krs
+## 15. course_registrations (KRS)
 - id (PK)
-- registrasi_id (FK → registrasi.id)
-- kelas_id (FK → kelas.id)
-- tanggal_pengisian
-- status_validasi
-- created_at
-- updated_at
+- registration_id (FK → registrations.id)
+- class_id (FK → classes.id)
+- registration_date  
+- validation_status  
+- created_at  
+- updated_at  
 
-## 16. nilai
+## 16. grades
 - id (PK)
-- krs_id (FK → krs.id)
-- nilai_angka
-- nilai_huruf
-- tanggal_input
-- created_at
-- updated_at
+- course_registration_id (FK → course_registrations.id)
+- numeric_grade  
+- letter_grade  
+- input_date  
+- created_at  
+- updated_at  
 
-## 17. tahun_ajaran
+## 17. academic_years
 - id (PK)
-- tahun_mulai
-- tahun_selesai
-- status_aktif
-- keterangan
-- created_at
-- updated_at
+- start_year  
+- end_year  
+- active_status  
+- notes  
+- created_at  
+- updated_at  
 
-## 18. semester
+## 18. semesters
 - id (PK)
-- nama
-- tahun_ajaran_id (FK → tahun_ajaran.id)
-- status
-- urutan
-- created_at
-- updated_at
+- name  
+- academic_year_id (FK → academic_years.id)
+- status  
+- order  
+- created_at  
+- updated_at  
 
-## 19. beasiswa
+## 19. scholarships
 - id (PK)
-- nama
-- penyelenggara
-- jenis
-- periode
-- created_at
-- updated_at
+- name  
+- provider  
+- type  
+- period  
+- created_at  
+- updated_at  
 
-## 20. penerima_beasiswa
+## 20. scholarship_recipients
 - id (PK)
-- mahasiswa_id (FK → mahasiswa.id)
-- beasiswa_id (FK → beasiswa.id)
-- tahun
-- status
-- created_at
-- updated_at
+- student_id (FK → students.id)
+- scholarship_id (FK → scholarships.id)
+- year  
+- status  
+- created_at  
+- updated_at  
 
-## 21. biaya_kuliah
+## 21. tuition_fees
 - id (PK)
-- prodi_id (FK → prodi.id)
-- semester
-- jumlah
-- jenis_pembayaran
-- created_at
-- updated_at
+- study_program_id (FK → study_programs.id)
+- semester  
+- amount  
+- payment_type  
+- created_at  
+- updated_at  
 
-## 22. pembayaran
+## 22. payments
 - id (PK)
-- mahasiswa_id (FK → mahasiswa.id)
-- biaya_kuliah_id (FK → biaya_kuliah.id)
-- tanggal_bayar
-- jumlah
-- created_at
-- updated_at
+- student_id (FK → students.id)
+- tuition_fee_id (FK → tuition_fees.id)
+- payment_date  
+- amount  
+- created_at  
+- updated_at  
 
-## 23. pengumuman
+## 23. announcements
 - id (PK)
-- judul
-- isi
-- tanggal
+- title  
+- content  
+- date  
 - user_id (FK → users.id)
-- created_at
-- updated_at
+- created_at  
+- updated_at  
 
-## 24. akun_dosen
-- id (PK)
-- user_id (FK → users.id)
-- dosen_id (FK → dosen.id)
-- status
-- terakhir_login
-- created_at
-- updated_at
-
-## 25. akun_mahasiswa
+## 24. lecturer_accounts
 - id (PK)
 - user_id (FK → users.id)
-- mahasiswa_id (FK → mahasiswa.id)
-- status
-- terakhir_login
-- created_at
-- updated_at
+- lecturer_id (FK → lecturers.id)
+- status  
+- last_login  
+- created_at  
+- updated_at  
 
-## 26. bimbingan_akademik
+## 25. student_accounts
 - id (PK)
-- mahasiswa_id (FK → mahasiswa.id)
-- dosen_id (FK → dosen.id)
-- tanggal
-- catatan
-- created_at
-- updated_at
+- user_id (FK → users.id)
+- student_id (FK → students.id)
+- status  
+- last_login  
+- created_at  
+- updated_at  
 
-## 27. skripsi
+## 26. academic_guidance
 - id (PK)
-- mahasiswa_id (FK → mahasiswa.id)
-- judul
-- status
-- tanggal_pengajuan
-- created_at
-- updated_at
+- student_id (FK → students.id)
+- lecturer_id (FK → lecturers.id)
+- date  
+- notes  
+- created_at  
+- updated_at  
 
-## 28. pembimbing_skripsi
+## 27. theses
 - id (PK)
-- skripsi_id (FK → skripsi.id)
-- dosen_id (FK → dosen.id)
-- peran
-- status_persetujuan
-- created_at
-- updated_at
+- student_id (FK → students.id)
+- title  
+- status  
+- submission_date  
+- created_at  
+- updated_at  
 
-## 29. sidang_skripsi
+## 28. thesis_supervisors
 - id (PK)
-- skripsi_id (FK → skripsi.id)
-- tanggal_sidang
-- ruangan_id (FK → ruangan.id)
-- status_sidang
-- created_at
-- updated_at
+- thesis_id (FK → theses.id)
+- lecturer_id (FK → lecturers.id)
+- role  
+- approval_status  
+- created_at  
+- updated_at  
 
-## 30. penguji_skripsi
+## 29. thesis_defenses
 - id (PK)
-- sidang_skripsi_id (FK → sidang_skripsi.id)
-- dosen_id (FK → dosen.id)
-- nilai
-- catatan
-- created_at
-- updated_at
+- thesis_id (FK → theses.id)
+- defense_date  
+- room_id (FK → rooms.id)
+- defense_status  
+- created_at  
+- updated_at  
+
+## 30. thesis_examiners
+- id (PK)
+- thesis_defense_id (FK → thesis_defenses.id)
+- lecturer_id (FK → lecturers.id)
+- grade  
+- remarks  
+- created_at  
+- updated_at  
 
 ## 31. alumni
 - id (PK)
-- mahasiswa_id (FK → mahasiswa.id)
-- tahun_lulus
-- pekerjaan
-- instansi
-- created_at
-- updated_at
+- student_id (FK → students.id)
+- graduation_year  
+- occupation  
+- company  
+- created_at  
+- updated_at  
 
-## 32. perusahaan
+## 32. companies
 - id (PK)
-- nama
-- alamat
-- kontak
-- email
-- created_at
-- updated_at
+- name  
+- address  
+- contact  
+- email  
+- created_at  
+- updated_at  
 
-## 33. lowongan_kerja
+## 33. job_vacancies
 - id (PK)
-- perusahaan_id (FK → perusahaan.id)
-- judul
-- deskripsi
-- tanggal_tutup
-- created_at
-- updated_at
+- company_id (FK → companies.id)
+- title  
+- description  
+- closing_date  
+- created_at  
+- updated_at  
 
-## 34. lamaran_pekerjaan
+## 34. job_applications
 - id (PK)
 - alumni_id (FK → alumni.id)
-- lowongan_kerja_id (FK → lowongan_kerja.id)
-- tanggal_lamaran
-- status
-- created_at
-- updated_at
+- job_vacancy_id (FK → job_vacancies.id)
+- application_date  
+- status  
+- created_at  
+- updated_at  
 
-## 35. organisasi_mahasiswa
+## 35. student_organizations
 - id (PK)
-- nama
-- jenis
-- tahun_berdiri
-- pembina_id (FK → dosen.id)
-- created_at
-- updated_at
+- name  
+- type  
+- established_year  
+- advisor_id (FK → lecturers.id)
+- created_at  
+- updated_at  
 
-## 36. anggota_organisasi
+## 36. organization_members
 - id (PK)
-- organisasi_id (FK → organisasi_mahasiswa.id)
-- mahasiswa_id (FK → mahasiswa.id)
-- jabatan
-- periode
-- created_at
-- updated_at
+- organization_id (FK → student_organizations.id)
+- student_id (FK → students.id)
+- position  
+- period  
+- created_at  
+- updated_at  
 
-## 37. prestasi
+## 37. achievements
 - id (PK)
-- mahasiswa_id (FK → mahasiswa.id)
-- nama_prestasi
-- tingkat
-- tahun
-- created_at
-- updated_at
+- student_id (FK → students.id)
+- achievement_name  
+- level  
+- year  
+- created_at  
+- updated_at  
 
-## 38. pelatihan
+## 38. trainings
 - id (PK)
-- nama
-- penyelenggara
-- tanggal_mulai
-- tanggal_selesai
-- created_at
-- updated_at
+- name  
+- provider  
+- start_date  
+- end_date  
+- created_at  
+- updated_at  
 
-## 39. peserta_pelatihan
+## 39. training_participants
 - id (PK)
-- mahasiswa_id (FK → mahasiswa.id)
-- pelatihan_id (FK → pelatihan.id)
-- status_kehadiran
-- sertifikat
-- created_at
-- updated_at
+- student_id (FK → students.id)
+- training_id (FK → trainings.id)
+- attendance_status  
+- certificate  
+- created_at  
+- updated_at  
 
-## 40. log_aktivitas
-- id (PK)
-- user_id (FK → users.id)
-- aksi
-- ip_address
-- waktu
-- created_at
-- updated_at
-
-## 41. riwayat_perubahan_data
+## 40. activity_logs
 - id (PK)
 - user_id (FK → users.id)
-- tabel_terpengaruh
-- aksi (insert/update/delete)
-- waktu_perubahan
-- created_at
-- updated_at
+- action  
+- ip_address  
+- timestamp  
+- created_at  
+- updated_at  
+
+## 41. data_change_history
+- id (PK)
+- user_id (FK → users.id)
+- affected_table  
+- action (insert/update/delete)  
+- change_timestamp  
+- created_at  
+- updated_at  
