@@ -7,6 +7,34 @@
 4. php artisan db:seed
 5. npm run build
 
+## Alur Pengerjaan
+1. git checkout -b work (untuk membuat branch dengan nama work dan pindah ke branch tersebut)
+2. php artisan make:model
+   - Isi nama model yang akan dibuat sesuai dengan nama tabel pada daftar tugas.
+   - Pilih:
+     - Database Seeder
+     - Form Request
+     - Migration
+     - Resource Controller
+   - Otomatis akan dibuatkan beberapa file tersebut
+3. Cari file migration dari table yang akan dibuat pada folder 'database/migrations/', kemudian diisi sesuai dengan kolom yang sudah ditentukan
+4. Implementasikan folder yang dibuat dengan menjalankan ```php artisan migrate```
+5. Cari file seeder pada folder 'database/seeders' dan kemudian sesuaikan dengan rancangan basis data yang ada. Kemudian jalankan ```php artisan db:seed```
+6. Tambahkan kolom yang dapat diisi pada model pada variabel fillable
+7. Sesuiakan controller, contoh seperti pada ```UniversityController```
+8. Buat folder pada 'resources/views' dengan nama entitas masing-masing. Selanjutnya buat file view (contoh pada folder unviersity)
+9. Cari file Request pada folder 'app/Http/Requests'
+10. Jika sudah maka commit dan merge branch
+    - git add .
+    - git commit -m "Pesannya apa"
+    - git checkout main
+    - git pull origin main
+    - git merge work
+    - git add .
+    - git commit -m "Pesannya apa"
+    - git push origin main
+11. Selesai
+
 ## Task Distribution
 | No | Table Name                         | Assigned To                               |
 | -- | ---------------------------------- | ----------------------------------------- |
