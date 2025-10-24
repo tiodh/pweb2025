@@ -1,29 +1,25 @@
 <?php
 
 namespace Database\Seeders;
-
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Database\Seeders\UniversitySeeder;
+use Database\Seeders\ScholarshipSeeder;
+use Database\Seeders\AcademicYearsSeeder;
 
 class DatabaseSeeder extends Seeder
 {
-    use WithoutModelEvents;
-
-    /**
-     * Seed the application's database.
-     */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'admin@pweb.com',
-            'password' => bcrypt('admin'), // set known password
         ]);
 
-        $this->call(UniversitySeeder::class);
-        $this->call(AcademicYearsSeeder::class);
+        $this->call([
+            UniversitySeeder::class,
+            ScholarshipSeeder::class,
+            AcademicYearsSeeder::class,
+        ]);
     }
 }
