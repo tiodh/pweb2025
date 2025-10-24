@@ -29,12 +29,18 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         @auth
                         <li class="nav-item">
                             <a class="nav-link {{ request()->routeIs('universities.*') ? 'active' : '' }}"
                                href="{{ route('universities.index') }}">
                                 Universities
+                            </a>
+                        </li>
+                        <li>
+                            <a class="nav-link {{ request()->routeIs('academic_years.*') ? 'active' : '' }}"
+                               href="{{ route('academic-years.index') }}">
+                                Academic Years
                             </a>
                         </li>
                         @endauth

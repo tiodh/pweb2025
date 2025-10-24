@@ -24,5 +24,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $this->call(UniversitySeeder::class);
+        $this->call(AcademicYearsSeeder::class);
     }
 }
