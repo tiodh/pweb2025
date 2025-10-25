@@ -14,12 +14,18 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'admin@pweb.com',
+            'password' => bcrypt('admin'),
         ]);
 
         $this->call([
             UniversitySeeder::class,
             ScholarshipSeeder::class,
             AcademicYearsSeeder::class,
+        ]);
+
+        $this->call([
+            AcademicYearsSeeder::class,
+            DataChangeHistorySeeder::class,
         ]);
     }
 }
