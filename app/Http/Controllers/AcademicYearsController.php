@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Storeacademic_yearsRequest;
 use App\Http\Requests\Updateacademic_yearsRequest;
-use App\Models\academic_years;
+use App\Models\AcademicYear;
 
 class AcademicYearsController extends Controller
 {
@@ -13,7 +13,7 @@ class AcademicYearsController extends Controller
      */
     public function index()
     {
-        $academicYears = academic_years::orderByDesc('id')->get();
+        $academicYears = AcademicYear::orderByDesc('id')->get(); // ✅ ganti nama model
         return view('academic_years.index', compact('academicYears'));
     }
 
@@ -30,35 +30,49 @@ class AcademicYearsController extends Controller
      */
     public function store(Storeacademic_yearsRequest $request)
     {
-        academic_years::create($request->validated());
-        return redirect()->route('academic-years.index')->with('success', 'Tahun akademik berhasil ditambahkan.');
+        // ✅ simpan hasil validasi ke variabel
+        $validated = $request->validate([
+            'start_year' => 'required|integer|min:2000',
+            'end_year' => 'required|integer|min:2000',
+            'active_status' => 'required|boolean',
+            'notes' => 'nullable|string|max:255',
+        ]);
+
+        // ✅ gunakan model yang benar + titik koma
+        AcademicYear::create($validated);
+
+        return redirect()
+            ->route('academic-years.index')
+            ->with('success', 'Tahun akademik berhasil ditambahkan.');
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(academic_years $academic_year)
+    public function edit(AcademicYear $academic_year)
     {
-        // ✅ variabel tunggal dan konsisten
         return view('academic_years.edit', compact('academic_year'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Updateacademic_yearsRequest $request, academic_years $academic_year)
+    public function update(Updateacademic_yearsRequest $request, AcademicYear $academic_year)
     {
-        // ✅ variabel tunggal juga di sini
         $academic_year->update($request->validated());
-        return redirect()->route('academic-years.index')->with('success', 'Tahun akademik berhasil diperbarui.');
+        return redirect()
+            ->route('academic-years.index')
+            ->with('success', 'Tahun akademik berhasil diperbarui.');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(academic_years $academic_year)
+    public function destroy(AcademicYear $academic_year)
     {
         $academic_year->delete();
-        return redirect()->route('academic-years.index')->with('success', 'Tahun akademik berhasil dihapus.');
+        return redirect()
+            ->route('academic-years.index')
+            ->with('success', 'Tahun akademik berhasil dihapus.');
     }
 }
