@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\AcademicYearsController;
+use App\Http\Controllers\DataChangeHistoryController;
+use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ActivityLogController;
-
-
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,7 +30,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::resource('academic-years', AcademicYearsController::class);
-
-
+    Route::resource('data_change_histories', DataChangeHistoryController::class)->only(['index', 'destroy']);
+    Route::resource('semesters', SemesterController::class);
     Route::resource('activity-logs', ActivityLogController::class)->only(['index', 'show', 'destroy']);
 });
