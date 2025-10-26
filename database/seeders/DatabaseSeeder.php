@@ -23,5 +23,10 @@ class DatabaseSeeder extends Seeder
             AcademicYearsSeeder::class,
             SemesterSeeder::class,
         ]);
+
+        $this->call([
+            AcademicYearsSeeder::class,
+            DataChangeHistorySeeder::class,
+        ]);
     }
 }
