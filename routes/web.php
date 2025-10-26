@@ -6,6 +6,7 @@ use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\ScholarshipController;
 use App\Http\Controllers\AcademicYearsController;
 use App\Http\Controllers\DataChangeHistoryController;
+use App\Http\Controllers\SemesterController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -20,4 +21,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('scholarships', ScholarshipController::class);
     Route::resource('academic-years', AcademicYearsController::class);
     Route::resource('data_change_histories', DataChangeHistoryController::class)->only(['index', 'destroy']);
+    Route::resource('semesters', SemesterController::class);
 });
