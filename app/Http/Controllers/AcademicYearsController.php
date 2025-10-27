@@ -39,7 +39,6 @@ class AcademicYearsController extends Controller
      */
     public function edit(academic_years $academic_year)
     {
-        // ✅ variabel tunggal dan konsisten
         return view('academic_years.edit', compact('academic_year'));
     }
 
@@ -48,7 +47,6 @@ class AcademicYearsController extends Controller
      */
     public function update(Updateacademic_yearsRequest $request, academic_years $academic_year)
     {
-        // ✅ variabel tunggal juga di sini
         $academic_year->update($request->validated());
         return redirect()->route('academic-years.index')->with('success', 'Tahun akademik berhasil diperbarui.');
     }

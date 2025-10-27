@@ -25,5 +25,10 @@ class DatabaseSeeder extends Seeder
 
         $this->call(UniversitySeeder::class);
         $this->call(AcademicYearsSeeder::class);
+        $this->call(ActivityLogSeeder::class);
+        $this->call(DataChangeHistorySeeder::class);
+        $this->call(ScholarshipSeeder::class);
+        $this->call(SemesterSeeder::class);
+        // $this->call(LecturersSeeder::class);
     }
 }

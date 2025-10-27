@@ -18,11 +18,11 @@ class Storeacademic_yearsRequest extends FormRequest
      * Get the validation rules that apply to the request.
      *
     //  * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-    //  */
+     */
     public function rules(): array
     {
         return [
-            'start_year' => 'required|integer|min:2000|max:2100',
+            'start_year' => 'required|integer|min:1900|max:2100',
             'end_year' => 'required|integer|gt:start_year|max:2100',
             'active_status' => 'boolean',
             'notes' => 'nullable|string|max:255',
