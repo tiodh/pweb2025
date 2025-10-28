@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\lecturers;
+use App\Models\StudyProgram;
 
 class LecturersSeeder extends Seeder
 {
@@ -13,13 +14,8 @@ class LecturersSeeder extends Seeder
      */
     public function run(): void
     {
-        $informatika = StudyProgram::firstOrCreate([
-            'name' => 'Teknik Informatika',
-        ]);
-
-        $sistemInformasi = StudyProgram::firstOrCreate([
-            'name' => 'Sistem Informasi',
-        ]);
+        $informatika = StudyProgram::where('name', 'Informatika')->first();
+        $sistemInformasi = StudyProgram::where('name', 'Sistem Informasi')->first();
 
         lecturers::create([
             'nim' => 'L001',
