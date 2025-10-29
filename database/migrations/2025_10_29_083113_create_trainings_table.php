@@ -1,4 +1,4 @@
-<?php
+cd<?php
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -12,9 +12,13 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('trainings', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        $table->id();
+        $table->string('name'); // <-- PASTIKAN BARIS INI ADA
+        $table->string('provider');
+        $table->dateTime('start_date');
+        $table->dateTime('end_date');
+        $table->timestamps();
+    });
     }
 
     /**

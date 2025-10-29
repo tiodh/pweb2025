@@ -3,15 +3,16 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
-class StoretrainingRequest extends FormRequest
+class StoreTrainingRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return Auth::check();
     }
 
     /**
@@ -22,7 +23,9 @@ class StoretrainingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
-        ];
-    }
+            'name' => 'required|string|max:255|unique:trainings,name',
+            'provider' => 'required|string|max:255',
+            'start_date' => 'required|date|after_or_equal:today',
+            'end_date' => 'required|date|after:start_date',
+        ];    }
 }
