@@ -15,32 +15,34 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'admin@pweb.com',
             'password' => bcrypt('admin'), // set known password
         ]);
 
-        $this->call(UniversitySeeder::class);
-        $this->call(AcademicYearsSeeder::class);
-        $this->call(StudyProgramSeeder::class);
-        $this->call(ActivityLogSeeder::class);
-        $this->call(DataChangeHistorySeeder::class);
-        $this->call(ScholarshipSeeder::class);
-        $this->call(SemesterSeeder::class);
-        $this->call(LecturersSeeder::class);
-        $this->call(StudentSeeder::class);
-        $this->call(LectureraccountsSeeder::class);
-        $this->call(TuitionFeeSeeder::class);
-        $this->call(PaymentSeeder::class);
-        $this->call(DepartmentSeeder::class);
-        $this->call(CoursesSeeder::class);
-        $this->call(AlumniSeeder::class);
-        $this->call(ScheduleSeeder::class);
-        $this->call(TrainingParticipantSeeder::class);
-        $this->call(CourseRegistrationSeeder::class);
-        $this->call(CompanySeeder::class);
+        $this->call([
+            UniversitySeeder::class,
+            FacultySeeder::class,
+            DepartmentSeeder::class,
+            StudyProgramSeeder::class,
+            StudentAccountSeeder::class,
+            AcademicYearsSeeder::class,
+            ActivityLogSeeder::class,
+            DataChangeHistorySeeder::class,
+            ScholarshipSeeder::class,
+            SemesterSeeder::class,
+            LecturersSeeder::class,
+            StudentSeeder::class,
+            LectureraccountsSeeder::class,
+            TuitionFeeSeeder::class,
+            PaymentSeeder::class,
+            CoursesSeeder::class,
+            AlumniSeeder::class,
+            ScheduleSeeder::class,
+            // TrainingParticipantSeeder::class, // aktifkan jika diperlukan
+            CourseRegistrationSeeder::class,
+            CompanySeeder::class,
+        ]);
     }
 }

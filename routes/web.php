@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\StudentAccountController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UniversityController;
@@ -29,7 +30,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+
 Route::middleware('auth')->group(function () {
+    Route::resource('student_accounts',StudentAccountController::class);
     Route::resource('universities', UniversityController::class);
     Route::resource('academic-years', AcademicYearsController::class);
     Route::resource('activity-logs', ActivityLogController::class)->only(['index', 'show', 'destroy']);
