@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'), // set known password
         ]);
 
-        $this->call(UniversitySeeder::class);
+        $this->call([
+            UniversitySeeder::class,
+            FacultySeeder::class,
+            DepartmentSeeder::class,
+            StudyProgramSeeder::class,
+            StudentAccountSeeder::class,
+        ]);
     }
 }
