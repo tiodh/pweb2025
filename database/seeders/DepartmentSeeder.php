@@ -4,6 +4,9 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use App\Models\Faculty;
+use App\Models\Department;
+
 
 class DepartmentSeeder extends Seeder
 {
@@ -12,6 +15,18 @@ class DepartmentSeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $faculty = Faculty::first();
+
+        if ($faculty) {
+            Department::create([
+                'faculty_id' => $faculty->id,
+                'name' => 'Teknologi Informasi',
+                'department_code' =>'TI',
+                'head_of_department' => 'raja jawa'
+            ]);
+        }
+        else{
+            $this->command->error("tabel fakultas belum dibuat");
+        }
     }
 }

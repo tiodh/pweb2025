@@ -11,12 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tuition_fees', function (Blueprint $table) {
+        Schema::create('courses', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('study_program_id')->constrained('study_programs')->onDelete('cascade');
-            $table->unsignedInteger('semester');
-            $table->decimal('amount', 12, 2);
-            $table->string('payment_type');
+            $table->string('course_code')->unique();
+            $table->string('name');
+            $table->integer('credits');
+            $table->foreignId('study_program_id')
+                  ->constrained('study_programs')
+                  ->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tuition_fees');
+        Schema::dropIfExists('courses');
     }
 };

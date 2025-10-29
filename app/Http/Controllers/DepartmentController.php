@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreDepartmentRequest;
 use App\Http\Requests\UpdateDepartmentRequest;
 use App\Models\Department;
+use App\Models\Faculty;
 
 class DepartmentController extends Controller
 {
@@ -13,7 +14,8 @@ class DepartmentController extends Controller
      */
     public function index()
     {
-        //
+        $departments = Department::with('faculty')->get();
+        return view('departments.index', compact('departments'));
     }
 
     /**
@@ -21,7 +23,8 @@ class DepartmentController extends Controller
      */
     public function create()
     {
-        //
+        $faculties = Faculty::all();
+        return view('departments.create', compact('faculties'));
     }
 
     /**
@@ -29,7 +32,9 @@ class DepartmentController extends Controller
      */
     public function store(StoreDepartmentRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+        Department::create($validatedData);
+        return redirect()->route('departments.index')->with('success', 'Department created successfully.');
     }
 
     /**
@@ -45,7 +50,8 @@ class DepartmentController extends Controller
      */
     public function edit(Department $department)
     {
-        //
+        $faculties = \App\Models\Faculty::all();
+        return view('departments.edit', compact('department', 'faculties'));   
     }
 
     /**
@@ -53,7 +59,9 @@ class DepartmentController extends Controller
      */
     public function update(UpdateDepartmentRequest $request, Department $department)
     {
-        //
+        $validatedData = $request->validated();
+        $department->update($validatedData);
+        return redirect()->route('departments.index')->with('success', 'Department updated successfully.');
     }
 
     /**
@@ -61,6 +69,8 @@ class DepartmentController extends Controller
      */
     public function destroy(Department $department)
     {
-        //
+        $department->delete();
+            return redirect() ->route('departments.index') 
+                              ->with('success', 'Data departemen berhasil dihapus.');
     }
 }

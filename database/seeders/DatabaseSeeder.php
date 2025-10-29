@@ -33,5 +33,9 @@ class DatabaseSeeder extends Seeder
         $this->call(LecturersSeeder::class);
         $this->call(StudentSeeder::class);
         $this->call(LectureraccountsSeeder::class);
+        $this->call(TuitionFeeSeeder::class);
+        $this->call(PaymentSeeder::class);
+        $this->call(DepartmentSeeder::class);
+        $this->call(CoursesSeeder::class);
     }
 }
