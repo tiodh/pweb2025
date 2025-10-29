@@ -43,6 +43,12 @@
                                 Academic Years
                             </a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link {{ request()->routeIs('announcements.*') ? 'active' : '' }}"
+                                href="{{ route('announcements.index') }}">
+                                Announcements
+                            </a>
+                        </li>
                         @endauth
                     </ul>
 
