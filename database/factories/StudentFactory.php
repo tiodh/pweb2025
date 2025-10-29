@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use App\Models\StudyProgram;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Student>
@@ -18,10 +20,10 @@ class StudentFactory extends Factory
     public function definition(): array
     {
         return [
-            'nim' => $this->faker->unique()->numerify('2025#####'),
-            'name' => $this->faker->name(),
-            'cohort_year' => $this->faker->year(),
-            'study_program_id' => StudyProgram::inRandomOrder()->first()?->id ?? 1,
+            'nim' => fake()->unique()->numerify('2###########'),
+            'name' => fake()->name(),
+            'cohort_year' => fake()->numberBetween(2020, 2025),
+            'study_program_id' => StudyProgram::factory(),
         ];
     }
 }
