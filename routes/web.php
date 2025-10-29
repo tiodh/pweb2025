@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\AcademicYearsController;
 use App\Http\Controllers\ActivityLogController;
+use App\Http\Controllers\AlumniController;
 use App\Http\Controllers\DataChangeHistoryController;
 use App\Http\Controllers\SemesterController;
 use App\Http\Controllers\ScholarshipController;
@@ -14,6 +15,8 @@ use App\Http\Controllers\LectureraccountsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\TrainingParticipantController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,4 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('payments', PaymentController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('course', CoursesController::class);
+    Route::resource('alumni', AlumniController::class);
+    Route::resource('schedules', ScheduleController::class);
+    Route::resource('training-participant', TrainingParticipantController::class);
 });
