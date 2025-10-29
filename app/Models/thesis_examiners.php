@@ -15,4 +15,14 @@ class thesis_examiners extends Model
         'grade',
         'remarks',
     ];
+
+        public function thesisDefense()
+    {
+        return $this->belongsTo(ThesisDefense::class);
+    }
+
+    public function lecturer()
+    {
+        return $this->belongsTo(lecturers::class);
+    }
 }
