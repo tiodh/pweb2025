@@ -1,5 +1,3 @@
- {{-- (File ini tidak butuh @extends) --}}
-
 <div class="mb-3">
     <label for="name" class="form-label">Nama Pelatihan</label>
     <input type="text" 

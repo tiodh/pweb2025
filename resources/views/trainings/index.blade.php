@@ -5,8 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             
-            {{-- Menampilkan notifikasi sukses --}}
-            @if(session('success'))
+           @if(session('success'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 {{ session('success') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -63,7 +62,6 @@
                         </table>
                     </div>
 
-                    {{-- Link Paginasi (otomatis ter-style oleh Bootstrap) --}}
                     <div class="d-flex justify-content-center">
                         {{ $trainings->links() }}
                     </div>
