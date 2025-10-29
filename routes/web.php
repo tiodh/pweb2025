@@ -14,6 +14,7 @@ use App\Http\Controllers\LectureraccountsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\CourseRegistrationController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -36,4 +37,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('payments', PaymentController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('course', CoursesController::class);
+    Route::resource('course_registration', CourseRegistrationController::class);
 });
