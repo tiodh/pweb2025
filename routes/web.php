@@ -13,7 +13,9 @@ use App\Http\Controllers\StudyProgramController;
 use App\Http\Controllers\LectureraccountsController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\TuitionFeeController;
 use App\Http\Controllers\CoursesController;
+use App\Models\TuitionFee;
 
 Route::get('/', function () {
     return view('welcome');
@@ -33,6 +35,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('students', StudentController::class);
     Route::resource('study-programs', StudyProgramController::class);
     Route::resource('lecturer-accounts', LectureraccountsController::class);
+    Route::resource('tuition-fees', TuitionFeeController::class);
     Route::resource('payments', PaymentController::class);
     Route::resource('departments', DepartmentController::class);
     Route::resource('course', CoursesController::class);
