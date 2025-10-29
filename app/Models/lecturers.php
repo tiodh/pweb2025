@@ -24,4 +24,9 @@ class lecturers extends Model
     {
         return $this->belongsTo(StudyProgram::class, 'study_program_id');
     }
+
+    public function studentOrganizations()
+    {
+        return $this->hasMany(StudentOrganization::class, 'advisor_id');
+    }
 }
