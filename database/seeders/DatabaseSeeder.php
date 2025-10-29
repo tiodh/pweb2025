@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('admin'), // set known password
         ]);
 
-        // Jalankan semua seeder yang dibutuhkan
         $this->call([
             UniversitySeeder::class,
             FacultySeeder::class,
@@ -43,6 +42,7 @@ class DatabaseSeeder extends Seeder
             ScheduleSeeder::class,
             // TrainingParticipantSeeder::class, // aktifkan jika diperlukan
             CourseRegistrationSeeder::class,
+            CompanySeeder::class,
         ]);
     }
 }
