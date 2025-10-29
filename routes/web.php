@@ -29,9 +29,9 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::resource('student_accounts',StudentAccountController::class);
 
 Route::middleware('auth')->group(function () {
+    Route::resource('student_accounts',StudentAccountController::class);
     Route::resource('universities', UniversityController::class);
     Route::resource('academic-years', AcademicYearsController::class);
     Route::resource('activity-logs', ActivityLogController::class)->only(['index', 'show', 'destroy']);
