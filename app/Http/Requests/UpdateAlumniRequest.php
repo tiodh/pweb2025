@@ -4,6 +4,10 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property \App\Models\Alumni|null $alumni
+ */
+
 class UpdateAlumniRequest extends FormRequest
 {
     /**

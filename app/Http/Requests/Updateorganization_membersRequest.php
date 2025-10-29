@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreAlumniRequest extends FormRequest
+class Updateorganization_membersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,7 @@ class StoreAlumniRequest extends FormRequest
     public function rules(): array
     {
         return [
-           'alumni_id' => 'required|exists:students,id|unique:alumni,student_id,' . ($this->alumni->id ?? ''),
-            'graduation_year' => 'required|digits:4|integer|min:1900|max:' . (date('Y') + 1),
-            'occupation' => 'nullable|string|max:255',
-            'company' => 'nullable|string|max:255',
+            //
         ];
     }
 }

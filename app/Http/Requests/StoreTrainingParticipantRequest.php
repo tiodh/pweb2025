@@ -3,6 +3,11 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+/**
+ * @method mixed input(string $key = null, mixed $default = null)
+ */
 
 class StoreTrainingParticipantRequest extends FormRequest
 {
@@ -11,7 +16,7 @@ class StoreTrainingParticipantRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

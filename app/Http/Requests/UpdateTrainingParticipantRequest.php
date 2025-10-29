@@ -3,6 +3,13 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
+
+/**
+ * @property \App\Models\TrainingParticipant|null $training_participant
+ * @method mixed input(string $key = null, $default = null)
+ * @method mixed route(string|null $param = null)
+ */
 
 class UpdateTrainingParticipantRequest extends FormRequest
 {
@@ -11,7 +18,7 @@ class UpdateTrainingParticipantRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,13 +28,14 @@ class UpdateTrainingParticipantRequest extends FormRequest
      */
     public function rules(): array
     {
+        $trainingParticipantId = optional($this->route('training-participant'))->id;
         return [
             'student_id' => [
                 'required',
                 'exists:students,id',
-                Rule::unique('training_participants')->ignore($trainingParticipantId)->where(function ($query) {
-                    return $query->where('training_id', $this->input('training_id'));
-                }),
+                Rule::unique('training_participants')
+                    ->ignore($trainingParticipantId)
+                    ->where(fn($query) => $query->where('training_id', $this->input('training_id'))),
             ],
             'training_id' => 'required|exists:trainings,id',
             'attendance_status' => 'required|string|in:Hadir,Absen,Izin|max:50',

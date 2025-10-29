@@ -6,6 +6,7 @@ use App\Http\Requests\StoreTrainingParticipantRequest;
 use App\Http\Requests\UpdateTrainingParticipantRequest;
 use App\Models\TrainingParticipant;
 use App\Models\Student;
+use App\Models\training;
 
 class TrainingParticipantController extends Controller
 {
@@ -43,8 +44,8 @@ class TrainingParticipantController extends Controller
      */
     public function show(TrainingParticipant $trainingParticipant)
     {
-        $trainingParticipant->load(['student', 'training']);
-        return view('training_participant.show', compact('trainingParticipant'));
+        // $trainingParticipant->load(['student', 'training']);
+        // return view('training_participant.show', compact('trainingParticipant'));
     }
 
     /**

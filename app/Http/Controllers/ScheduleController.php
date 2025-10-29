@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreScheduleRequest;
 use App\Http\Requests\UpdateScheduleRequest;
 use App\Models\Schedule;
+use App\Models\rooms;
+use App\Models\classes;
 
 class ScheduleController extends Controller
 {
@@ -23,7 +25,7 @@ class ScheduleController extends Controller
     public function create()
     {
         $classes = Classes::all();
-        $rooms = Room::all();
+        $rooms = rooms::all();
         return view('schedules.create', compact('classes', 'rooms'));
     }
 
@@ -42,7 +44,7 @@ class ScheduleController extends Controller
      */
     public function show(Schedule $schedule)
     {
-        return view('schedules.show', compact('schedule'));
+        // return view('schedules.show', compact('schedule'));
     }
 
     /**
@@ -51,7 +53,7 @@ class ScheduleController extends Controller
     public function edit(Schedule $schedule)
     {
         $classes = Classes::all();
-        $rooms = Room::all();
+        $rooms = rooms::all();
         return view('schedules.edit', compact('schedule', 'classes', 'rooms'));
     }
 

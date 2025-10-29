@@ -17,6 +17,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TrainingParticipantController;
+use App\Http\Controllers\TuitionFeeController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -42,4 +43,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('alumni', AlumniController::class);
     Route::resource('schedules', ScheduleController::class);
     Route::resource('training-participant', TrainingParticipantController::class);
+    Route::resource('tuition-fee', TuitionFeeController::class);
 });
