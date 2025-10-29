@@ -36,7 +36,7 @@ class LectureraccountsController extends Controller
     {
         lectureraccounts::create($request->validated());
         return redirect()
-            ->route('lecturer_accounts.index')
+            ->route('lecturer-accounts.index')
             ->with('success', 'Lecturer account created successfully.');
     }
 
@@ -65,7 +65,7 @@ class LectureraccountsController extends Controller
     {
         $lectureraccounts->update($request->validated());
         return redirect()
-            ->route('lecturer_accounts.index')
+            ->route('lecturer-accounts.index')
             ->with('success', 'Lecturer account updated successfully.');
     }
 
@@ -80,7 +80,7 @@ class LectureraccountsController extends Controller
 
         $lectureraccounts->delete();
         return redirect()
-            ->route('lecturer_accounts.index')
+            ->route('lecturer-accounts.index')
             ->with('success', 'Lecturer account deleted successfully.');
     }
 }
