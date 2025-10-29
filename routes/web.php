@@ -21,6 +21,7 @@ use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TrainingParticipantController;
 use App\Http\Controllers\TuitionFeeController;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\ThesisDefensesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,4 +52,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('tuition-fee', TuitionFeeController::class);
     Route::resource('course-registration', CourseRegistrationController::class);
     Route::resource('companies', CompanyController::class);
+    Route::resource('thesis_defenses', ThesisDefensesController::class);
 });

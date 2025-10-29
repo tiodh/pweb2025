@@ -43,6 +43,7 @@ class DatabaseSeeder extends Seeder
             // TrainingParticipantSeeder::class, // aktifkan jika diperlukan
             CourseRegistrationSeeder::class,
             CompanySeeder::class,
+            ThesisDefensesSeeder::class,
         ]);
     }
 }
