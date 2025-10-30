@@ -1,80 +1,122 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container mx-auto py-8 max-w-3xl">
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
 
-    {{-- Judul Halaman dan Tombol Kembali --}}
-    <div class="flex justify-between items-center mb-6">
-        <h1 class="text-3xl font-bold">Detail Akun Mahasiswa</h1>
-        <a href="{{ route('student_accounts.index') }}"
-           class="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-            &larr; Kembali
-        </a>
+            {{-- HEADER: Judul Halaman dan Tombol Kembali --}}
+            <div class="d-flex justify-content-between align-items-center mb-3">
+                <h1 class="h3 mb-0">Detail Akun Mahasiswa</h1>
+                <a href="{{ route('student_accounts.index') }}" class="btn btn-secondary shadow-sm">
+                    &larr; Kembali
+                </a>
+            </div>
+
+            {{-- KONTEN: Detail Data --}}
+            <div class="card shadow-sm border-0">
+                {{-- Grup 1: Status Akun --}}
+                <div class="card-header bg-light border-0">
+                    <h5 class="mb-0">Status Akun</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 fw-medium">Status</dt>
+                        <dd class="col-sm-8">
+                            @if ($studentAccount->status == 'active')
+                                <span class="badge bg-success-subtle text-success-emphasis rounded-pill">Aktif</span>
+                            @elseif ($studentAccount->status == 'inactive')
+                                <span class="badge bg-warning-subtle text-warning-emphasis rounded-pill">Nonaktif</span>
+                            @else
+                                <span class="badge bg-danger-subtle text-danger-emphasis rounded-pill">Dibekukan</span>
+                            @endif
+                        </dd>
+
+                        <dt class="col-sm-4 fw-medium">Login Terakhir</dt>
+                        <dd class="col-sm-8">{{ $studentAccount->last_login?->format('d M Y, H:i:s') ?? 'Belum pernah login' }}</dd>
+                    </dl>
+                </div>
+
+                {{-- Grup 2: Detail User (Login) --}}
+                <div class="card-header bg-light border-0">
+                    <h5 class="mb-0">Data User (Login)</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 fw-medium">Nama User</dt>
+                        <dd class="col-sm-8">{{ $studentAccount->user?->name ?? 'N/A' }}</dd>
+
+                        <dt class="col-sm-4 fw-medium">Email User</dt>
+                        <dd class="col-sm-8">{{ $studentAccount->user?->email ?? 'N/A' }}</dd>
+                    </dl>
+                </div>
+
+                {{-- Grup 3: Detail Profil Mahasiswa --}}
+                <div class="card-header bg-light border-0">
+                    <h5 class="mb-0">Data Profil Mahasiswa</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row mb-0">
+                        <dt class="col-sm-4 fw-medium">Nama Mahasiswa</dt>
+                        <dd class="col-sm-8">{{ $studentAccount->student?->name ?? 'N/A' }}</g>
+
+                        <dt class="col-sm-4 fw-medium">NIM</dt>
+                        <dd class="col-sm-8">{{ $studentAccount->student?->nim ?? 'N/A' }}</g>
+
+                        <dt class="col-sm-4 fw-medium">Tahun Angkatan</dt>
+                        <dd class="col-sm-8">{{ $studentAccount->student?->cohort_year ?? 'N/A' }}</g>
+
+                        <dt class="col-sm-4 fw-medium">Program Studi</dt>
+                        <dd class="col-sm-8">{{ $studentAccount->student?->studyProgram?->name ?? 'N/A' }}</g>
+                    </dl>
+                </div>
+
+                {{-- Tombol Aksi --}}
+                <div class="card-footer bg-light border-0 text-end">
+                    <a href="{{ route('student_accounts.edit', $studentAccount) }}" class="btn btn-warning shadow-sm me-2">
+                        Edit
+                    </a>
+                    <form action="{{ route('student_accounts.destroy', $studentAccount) }}" method="POST"
+                          class="delete-form d-inline-block"
+                          data-nama="{{ $studentAccount->user?->name ?? 'akun ini' }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger shadow-sm">
+                            Hapus
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+@endsection
 
-    {{-- Konten Detail --}}
-    <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-
-        {{-- Status Akun --}}
-        <div class="mb-6">
-            <h2 class="text-xl font-semibold text-gray-800 mb-2">Status Akun</h2>
-            <div class="flex items-center">
-                <span class="text-gray-700 font-bold mr-2">Status:</span>
-                @if ($studentAccount->status == 'active')
-                    <span class="bg-green-200 text-green-700 py-1 px-3 rounded-full text-sm font-medium">
-                        {{ ucfirst($studentAccount->status) }}
-                    </span>
-                @else
-                    <span class="bg-red-200 text-red-700 py-1 px-3 rounded-full text-sm font-medium">
-                        {{ ucfirst($studentAccount->status) }}
-                    </span>
-                @endif
-            </div>
-            <div class="mt-2">
-                <span class="text-gray-700 font-bold mr-2">Login Terakhir:</span>
-                <span class="text-gray-600">
-                    {{ $studentAccount->last_login?->format('d M Y, H:i:s') ?? 'Belum pernah login' }}
-                </span>
-            </div>
-        </div>
-
-        <hr class="my-6">
-
-        {{-- Detail User (Login) --}}
-        <div class="mb-6">
-            <h2 class="text-xl font-semibold text-gray-800 mb-2">Data User (Login)</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <span class="text-gray-700 font-bold">Nama User:</span>
-                    <p class="text-gray-600">{{ $studentAccount->user?->name ?? 'N/A' }}</p>
-                </div>
-                <div>
-                    <span class="text-gray-700 font-bold">Email User:</span>
-                    <p class="text-gray-600">{{ $studentAccount->user?->email ?? 'N/A' }}</p>
-                </div>
-            </div>
-        </div>
-
-        <hr class="my-6">
-
-        {{-- Detail Profil Mahasiswa --}}
-        <div>
-            <h2 class="text-xl font-semibold text-gray-800 mb-2">Data Profil Mahasiswa</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <span class="text-gray-700 font-bold">Nama Mahasiswa:</span>
-                    <p class="text-gray-600">{{ $studentAccount->student?->name ?? 'N/A' }}</p>
-                </div>
-                <div>
-                    <span class="text-gray-700 font-bold">NIM:</span>
-                    <p class="text-gray-600">{{ $studentAccount->student?->nim ?? 'N/A' }}</p>
-                </div>
-                <div>
-                    <span class="text-gray-700 font-bold">Tahun Angkatan:</span>
-                    <p class="text-gray-600">{{ $studentAccount->student?->cohort_year ?? 'N/A' }}</p>
-                </div>
-                <div>
-                    <span class="text-gray-700 font-bold">Program Studi:</span>
-                    <p class="text-gray-600">{{ $studentAccount->student?->studyProgram?->name ?? 'N/A' }}</p>
-                </div>
-            </div>
+@push('scripts')
+{{-- Script SweetAlert untuk tombol Hapus --}}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const deleteForms = document.querySelectorAll('.delete-form');
+        deleteForms.forEach(form => {
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const nama = this.getAttribute('data-nama');
+                Swal.fire({
+                    title: 'Anda yakin?',
+                    text: `Data akun untuk "${nama}" akan dihapus permanen!`,
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#d33',
+                    cancelButtonColor: '#3085d6',
+                    confirmButtonText: 'Ya, hapus!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        this.submit();
+                    }
+                });
+            });
+        });
+    });
+</script>
+@endpush

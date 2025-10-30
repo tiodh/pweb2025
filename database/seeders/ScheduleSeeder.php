@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\Schedule;
+use App\Models\classes;
+use App\Models\rooms;
 
 class ScheduleSeeder extends Seeder
 {
@@ -13,26 +15,22 @@ class ScheduleSeeder extends Seeder
      */
     public function run(): void
     {
-        Schedule::create([
-            'class_id' => 1,
-            'room_id' => 1,
-            'day' => 'Senin',
-            'start_time' => '08:00:00',
-            'end_time' => '09:40:00',
-        ]);
-        Schedule::create([
-            'class_id' => 2,
-            'room_id' => 3,
-            'day' => 'Rabu',
-            'start_time' => '10:00:00',
-            'end_time' => '11:40:00',
-        ]);
-        Schedule::create([
-            'class_id' => 1,
-            'room_id' => 1,
-            'day' => 'Kamis',
-            'start_time' => '14:00:00',
-            'end_time' => '15:40:00',
-        ]);
+        $classIds = classes::pluck('id');
+        $roomIds = rooms::pluck('id');
+
+        if ($classIds->isEmpty() || $roomIds->isEmpty()) {
+            $this->command->error('Tabel classes atau rooms kosong. Jalankan seeder yang sesuai terlebih dahulu.');
+            return;
+        }
+
+        for ($i = 0; $i < 5; $i++) {
+            Schedule::create([
+                'class_id' => $classIds->random(),
+                'room_id' => $roomIds->random(),
+                'day' => fake()->randomElement(['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat']),
+                'start_time' => fake()->time('H:i:s', '17:00:00'),
+                'end_time' => fake()->time('H:i:s', '19:00:00'),
+            ]);
+        }
     }
 }

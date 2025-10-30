@@ -14,35 +14,39 @@ class LecturersSeeder extends Seeder
      */
     public function run(): void
     {
-        $informatika = StudyProgram::where('name', 'Informatika')->first();
-        $sistemInformasi = StudyProgram::where('name', 'Sistem Informasi')->first();
+        $studyProgramIds = StudyProgram::pluck('id');
 
-        lecturers::create([
+        if ($studyProgramIds->isEmpty()) {
+            $this->command->error('Tidak ada data Program Studi. Jalankan StudyProgramSeeder terlebih dahulu.');
+            return;
+        }
+
+        Lecturers::create([
             'nim' => 'L001',
             'name' => 'Dr. Rendra Saputra',
             'cohort_year' => 2010,
-            'study_program_id' => $informatika->id,
+            'study_program_id' => $studyProgramIds->random(),
         ]);
 
         Lecturers::create([
             'nim' => 'L002',
             'name' => 'Ir. Dwi Nirmala, M.Kom',
             'cohort_year' => 2012,
-            'study_program_id' => $informatika->id,
+            'study_program_id' => $studyProgramIds->random(),
         ]);
 
         Lecturers::create([
             'nim' => 'L003',
             'name' => 'Dr. Sinta Wardhani',
             'cohort_year' => 2011,
-            'study_program_id' => $sistemInformasi->id,
+            'study_program_id' => $studyProgramIds->random(),
         ]);
 
         Lecturers::create([
             'nim' => 'L004',
             'name' => 'Agus Ramadhan, S.Kom., M.T.',
             'cohort_year' => 2013,
-            'study_program_id' => $sistemInformasi->id,
+            'study_program_id' => $studyProgramIds->random(),
         ]);
     }
 }

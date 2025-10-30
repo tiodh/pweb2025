@@ -17,7 +17,10 @@ class BuildingsFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'name' => 'Gedung ' . fake()->word(),
+            'location' => fake()->address(),
+            'floors' => fake()->numberBetween(2, 8),
+            'building_code' => strtoupper(fake()->unique()->lexify('G??')),
         ];
     }
 }

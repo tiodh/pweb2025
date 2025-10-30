@@ -11,16 +11,15 @@ class CourseRegistration extends Model
     use HasFactory;
 
     protected $fillable = [
-        'registration_id',
         'class_id',
         'registration_date',
         'validation_status',
     ];
 
-    public function registration()
-    {
-        return $this->belongsTo(Registration::class);
-    }
+    // public function registration()
+    // {
+    //     return $this->belongsTo(Registration::class);
+    // }
 
     public function class()
     {

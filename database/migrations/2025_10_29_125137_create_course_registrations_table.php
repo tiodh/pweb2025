@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('course_registrations', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('registration_id')->constrained('registrations')->onDelete('cascade');
+            // $table->foreignId('registration_id')->constrained('registrations')->onDelete('cascade'); 
             $table->foreignId('class_id')->constrained('classes')->onDelete('cascade');
             $table->date('registration_date');
             $table->string('validation_status')->default('pending');

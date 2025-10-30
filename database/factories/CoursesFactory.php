@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\StudyProgram;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,10 @@ class CoursesFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'course_code' => strtoupper(fake()->unique()->bothify('??-###')),
+            'name' => fake()->sentence(3),
+            'credits' => fake()->numberBetween(1, 4),
+            'study_program_id' => StudyProgram::factory(),
         ];
     }
 }
