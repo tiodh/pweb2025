@@ -46,4 +46,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('training-participant', TrainingParticipantController::class);
     Route::resource('tuition-fee', TuitionFeeController::class);
     Route::resource('course-registration', CourseRegistrationController::class);
+    Route::resource('achievement', App\Http\Controllers\AchievementController::class);
 });
