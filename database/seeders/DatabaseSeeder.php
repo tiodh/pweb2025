@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\theses;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -38,8 +39,10 @@ class DatabaseSeeder extends Seeder
         $this->call(DepartmentSeeder::class);
         $this->call(CoursesSeeder::class);
         $this->call(AlumniSeeder::class);
-        $this->call(ScheduleSeeder::class);
+        $this->call(theses::class);
+        // $this->call(ScheduleSeeder::class);
         // $this->call(TrainingParticipantSeeder::class);
-        $this->call(CourseRegistrationSeeder::class);
+        // $this->call(CourseRegistrationSeeder::class);
+        $this->call(ThesisSupervisorsSeeder::class);
     }
 }
