@@ -12,6 +12,14 @@ class FacultySeeder extends Seeder
      */
     public function run(): void
     {
-        //
+        $university = University::first();
+        if ($university) {
+            Faculty::create([
+                'university_id' => $university->id,
+                'name' => 'Fakultas Ilmu Komputer',
+                'dean' => 'Dr. Budi Hartono, S.Kom., M.Cs.',
+                'faculty_code' => 'FILKOM'
+            ]);
+        }
     }
 }

@@ -6,6 +6,8 @@ use App\Http\Controllers\UniversityController;
 use App\Http\Controllers\AcademicYearsController;
 use App\Http\Controllers\ActivityLogController;
 use App\Http\Controllers\AlumniController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\CourseRegistrationController;
 use App\Http\Controllers\DataChangeHistoryController;
 use App\Http\Controllers\SemesterController;
@@ -22,8 +24,10 @@ use App\Http\Controllers\TuitionFeeController;
 use App\Http\Controllers\StudentOrganizationController;
 use App\Http\Controllers\GradeController;
 use App\Http\Controllers\ScholarshipRecipientsController;
+use App\Http\Controllers\TeachingLecturersController;
 use App\Http\Controllers\ThesisDefensesController;
 use App\Http\Controllers\ThesisExaminersController;
+use App\Http\Controllers\ThesisSupervisorsController;
 use App\Http\Controllers\TrainingController;
 
 Route::get('/', function () {
@@ -58,4 +62,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('thesis-defenses', ThesisDefensesController::class);
     Route::resource('thesis-examiner', ThesisExaminersController::class);
     Route::resource('scholarship-recipients', ScholarshipRecipientsController::class);
+    Route::resource('teaching-lecturers', TeachingLecturersController::class);
+    Route::resource('announcement', AnnouncementController::class);
+    Route::resource('companies', CompanyController::class);
+    Route::resource('thesis-supervisor', ThesisSupervisorsController::class);
 });

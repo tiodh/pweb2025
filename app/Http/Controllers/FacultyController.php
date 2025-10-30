@@ -13,7 +13,8 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        //
+        $faculties = Faculty::with('university')->latest()->paginate(10);
+        return view('faculties.index', compact('faculties'));
     }
 
     /**
@@ -21,7 +22,8 @@ class FacultyController extends Controller
      */
     public function create()
     {
-        //
+        $universities = University::all();
+        return view('faculties.create', compact('universities'));
     }
 
     /**
@@ -29,7 +31,8 @@ class FacultyController extends Controller
      */
     public function store(StoreFacultyRequest $request)
     {
-        //
+        Faculty::create($request->validated());
+        return redirect()->route('faculties.index')->with('success', 'Faculty created successfully.');
     }
 
     /**
@@ -37,7 +40,7 @@ class FacultyController extends Controller
      */
     public function show(Faculty $faculty)
     {
-        //
+        return view('faculties.show', compact('faculty'));
     }
 
     /**
@@ -45,7 +48,8 @@ class FacultyController extends Controller
      */
     public function edit(Faculty $faculty)
     {
-        //
+        $universities = University::all();
+        return view('faculties.edit', compact('faculty', 'universities'));
     }
 
     /**
@@ -53,7 +57,8 @@ class FacultyController extends Controller
      */
     public function update(UpdateFacultyRequest $request, Faculty $faculty)
     {
-        //
+        $faculty->update($request->validated());
+        return redirect()->route('faculties.index')->with('success', 'Faculty updated successfully.');
     }
 
     /**
@@ -61,6 +66,7 @@ class FacultyController extends Controller
      */
     public function destroy(Faculty $faculty)
     {
-        //
+        $faculty->delete();
+        return redirect()->route('faculties.index')->with('success', 'Faculty deleted successfully.');
     }
 }

@@ -3,8 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
-class StoreFacultyRequest extends FormRequest
+
+class Storethesis_supervisorRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +24,16 @@ class StoreFacultyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'university_id' => 'required|exists:universities,id',
-            'name' => 'required|string|max:255',
-            'dean' => 'required|string|max:255',
-            'faculty_code' => 'required|string|max:50|unique:faculties,faculty_code',
+            'lecturer_id' => 'required|integer|exists:lecturers,id',
+
+            'theses_id' => 'required|integer|exists:theses,id',
+            
+            'role' => 'required|string|max:50', 
+            'approval_status' => [
+                'nullable', 
+                'string', 
+                Rule::in(['pending', 'approved', 'rejected']) 
+            ],
         ];
     }
 }

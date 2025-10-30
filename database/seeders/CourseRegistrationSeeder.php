@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\CourseRegistration;
 use App\Models\Registration;
+use Illuminate\Support\Carbon;
 
 class CourseRegistrationSeeder extends Seeder
 {

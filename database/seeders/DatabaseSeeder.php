@@ -47,5 +47,10 @@ class DatabaseSeeder extends Seeder
         $this->call(ThesisDefensesSeeder::class);
         $this->call(ThesisExaminersSeeder::class);
         $this->call(ScholarshipRecipientsSeeder::class);
+        $this->call(AnnouncementSeeder::class);
+        $this->call(CompaniesSeeder::class);
+        $this->call(ThesisSupervisorSeeder::class);
+        $this->call(TeachingLecturersSeeder::class);
+        $this->call(FacultySeeder::class);
     }
 }
