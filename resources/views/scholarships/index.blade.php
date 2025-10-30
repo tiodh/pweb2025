@@ -1,24 +1,32 @@
-@extends('layouts.app')
+@extends('layouts.scholarships')
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
-            <div class="card">
+            <!-- Tambahkan animasi AOS di sini -->
+            <div class="card" data-aos="fade-up">
                 <div class="card-header">
-                    Manajemen Beasiswa
-                    <a href="{{ route('scholarships.create') }}" class="btn btn-primary btn-sm float-end">Tambah Beasiswa</a>
+                    <h5>
+                        <!-- Tambahkan ikon di judul -->
+                        <i class="fas fa-graduation-cap"></i> Manajemen Beasiswa
+                    </h5>
                 </div>
 
                 <div class="card-body">
+                    <a href="{{ route('scholarships.create') }}" class="btn btn-primary mb-3">
+                        <i class="fas fa-plus"></i> Tambah Beasiswa
+                    </a>
+
                     @if (session('success'))
                         <div class="alert alert-success" role="alert">
                             {{ session('success') }}
                         </div>
                     @endif
 
-                    <table class="table table-bordered">
-                        <thead>
+                    <!-- Tambahkan table-hover agar lebih interaktif -->
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-light">
                             <tr>
                                 <th>ID</th>
                                 <th>Nama Beasiswa</th>
@@ -38,10 +46,14 @@
                                     <td>{{ $scholarship->period }}</td>
                                     <td>
                                         <form action="{{ route('scholarships.destroy', $scholarship->id) }}" method="POST">
-                                            <a href="{{ route('scholarships.edit', $scholarship->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                                            <a href="{{ route('scholarships.edit', $scholarship->id) }}" class="btn btn-warning btn-sm">
+                                                <i class="fas fa-pencil-alt"></i> Edit
+                                            </a>
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin menghapus?')">Hapus</button>
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
+                                                <i class="fas fa-trash"></i> Hapus
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>
