@@ -19,6 +19,8 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TrainingParticipantController;
 use App\Http\Controllers\TuitionFeeController;
+use App\Http\Controllers\StudentOrganizationController;
+use App\Http\Controllers\OrganizationMembersController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,4 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('training-participant', TrainingParticipantController::class);
     Route::resource('tuition-fee', TuitionFeeController::class);
     Route::resource('course-registration', CourseRegistrationController::class);
+    Route::resource('student-organizations', StudentOrganizationController::class);
+    Route::resource('organization_members', OrganizationMembersController::class);
 });
+

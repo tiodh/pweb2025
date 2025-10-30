@@ -31,14 +31,16 @@ class DatabaseSeeder extends Seeder
         $this->call(ScholarshipSeeder::class);
         $this->call(SemesterSeeder::class);
         $this->call(LecturersSeeder::class);
-        $this->call(StudentSeeder::class);
         $this->call(LectureraccountsSeeder::class);
+        $this->call(StudentSeeder::class);
         $this->call(TuitionFeeSeeder::class);
         $this->call(PaymentSeeder::class);
         $this->call(DepartmentSeeder::class);
         $this->call(CoursesSeeder::class);
         $this->call(AlumniSeeder::class);
         $this->call(ScheduleSeeder::class);
+        $this->call(StudentOrganizationSeeder::class);
+        $this->call(OrganizationMembersSeeder::class);
         // $this->call(TrainingParticipantSeeder::class);
         $this->call(CourseRegistrationSeeder::class);
     }
