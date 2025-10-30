@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trainings', function (Blueprint $table) {
+        Schema::create('student_organizations', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // <-- PASTIKAN BARIS INI ADA
-            $table->string('provider');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->string('name');
+            $table->string('type');
+            $table->year('established_year');
+            $table->foreignId('advisor_id')->constrained('lecturers')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trainings');
+        Schema::dropIfExists('student_organizations');
     }
 };

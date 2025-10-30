@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trainings', function (Blueprint $table) {
+        Schema::create('faculty', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // <-- PASTIKAN BARIS INI ADA
-            $table->string('provider');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trainings');
+        Schema::dropIfExists('faculty');
     }
 };

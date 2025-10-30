@@ -9,4 +9,15 @@ class training extends Model
 {
     /** @use HasFactory<\Database\Factories\TrainingFactory> */
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'provider',
+        'start_date',
+        'end_date',
+    ];
+    protected $casts = [
+        'start_date' => 'datetime',
+        'end_date' => 'datetime',
+    ];
 }

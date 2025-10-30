@@ -19,6 +19,12 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\ScheduleController;
 use App\Http\Controllers\TrainingParticipantController;
 use App\Http\Controllers\TuitionFeeController;
+use App\Http\Controllers\StudentOrganizationController;
+use App\Http\Controllers\GradeController;
+use App\Http\Controllers\ScholarshipRecipientsController;
+use App\Http\Controllers\ThesisDefensesController;
+use App\Http\Controllers\ThesisExaminersController;
+use App\Http\Controllers\TrainingController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -46,4 +52,10 @@ Route::middleware('auth')->group(function () {
     Route::resource('training-participant', TrainingParticipantController::class);
     Route::resource('tuition-fee', TuitionFeeController::class);
     Route::resource('course-registration', CourseRegistrationController::class);
+    Route::resource('student-organizations', StudentOrganizationController::class);
+    Route::resource('grade', GradeController::class);
+    Route::resource('trainings', TrainingController::class);
+    Route::resource('thesis-defenses', ThesisDefensesController::class);
+    Route::resource('thesis-examiner', ThesisExaminersController::class);
+    Route::resource('scholarship-recipients', ScholarshipRecipientsController::class);
 });

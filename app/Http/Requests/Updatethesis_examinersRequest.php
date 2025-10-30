@@ -3,10 +3,10 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
-class UpdatetrainingRequest extends FormRequest
+class UpdateThesisExaminersRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,17 +23,12 @@ class UpdatetrainingRequest extends FormRequest
      */
     public function rules(): array
     {
-        $trainingId = $this->route('training')->id;
+        $thesis_examiners = $this->route('thesis-examiners');
         return [
-            'name' => [
-                'required',
-                'string',
-                'max:255',
-                Rule::unique('trainings')->ignore($trainingId),
-            ],
-            'provider' => 'required|string|max:255',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date|after:start_date',
+            'thesis_defense_id' => 'required|exists:thesis_defenses,id',
+            'lecturer_id'       => 'required|exists:lecturers,id',
+            'grade'             => 'required|numeric|min:0|max:100',
+            'remarks'           => 'nullable|string|max:1000',
         ];
     }
 }

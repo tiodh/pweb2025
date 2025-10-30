@@ -11,12 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trainings', function (Blueprint $table) {
+        Schema::create('thesis_defenses', function (Blueprint $table) {
             $table->id();
-            $table->string('name'); // <-- PASTIKAN BARIS INI ADA
-            $table->string('provider');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->foreignId('thesis_id')->constrained('theses')->onDelete('cascade');
+            $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
+            $table->date('defense_date');
+            $table->string('defense_status')->default('pending');
             $table->timestamps();
         });
     }
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('trainings');
+        Schema::dropIfExists('thesis_defenses');
     }
 };
