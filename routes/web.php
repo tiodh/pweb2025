@@ -25,6 +25,7 @@ use App\Http\Controllers\ScholarshipRecipientsController;
 use App\Http\Controllers\ThesisDefensesController;
 use App\Http\Controllers\ThesisExaminersController;
 use App\Http\Controllers\TrainingController;
+use App\Http\Controllers\BuildingsController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -58,4 +59,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('thesis-defenses', ThesisDefensesController::class);
     Route::resource('thesis-examiner', ThesisExaminersController::class);
     Route::resource('scholarship-recipients', ScholarshipRecipientsController::class);
+    Route::resource('buildings', BuildingsController::class);
 });

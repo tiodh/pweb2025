@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('buildings', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
+            $table->string('name');
+            $table->string('location')->nullable();
+            $table->integer('floors')->default(1);
+            $table->string('building_code')->unique();
+            $table->timestamps(); // created_at & updated_at
         });
     }
 

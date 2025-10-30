@@ -8,59 +8,55 @@ use App\Models\buildings;
 
 class BuildingsController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $buildings = buildings::all();
+        return view('buildings.index', compact('buildings'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('buildings.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(StorebuildingsRequest $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'location' => 'nullable',
+            'floors' => 'required|integer',
+            'building_code' => 'required|unique:buildings',
+        ]);
+
+        buildings::create($request->all());
+        return redirect()->route('buildings.index')->with('success', 'Building added!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(buildings $buildings)
+    public function show(buildings $building)
     {
-        //
+        return view('buildings.show', compact('building'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(buildings $buildings)
+    public function edit(buildings $building)
     {
-        //
+        return view('buildings.edit', compact('building'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(UpdatebuildingsRequest $request, buildings $buildings)
+    public function update(UpdatebuildingsRequest $request, buildings $building)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'floors' => 'required|integer',
+            'building_code' => 'required|unique:buildings,building_code,' . $building->id,
+        ]);
+
+        $building->update($request->all());
+        return redirect()->route('buildings.index')->with('success', 'Building updated!');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(buildings $buildings)
+    public function destroy(buildings $building)
     {
-        //
+        $building->delete();
+        return redirect()->route('buildings.index')->with('success', 'Building deleted!');
     }
 }

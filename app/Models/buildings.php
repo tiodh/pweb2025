@@ -7,6 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class buildings extends Model
 {
-    /** @use HasFactory<\Database\Factories\BuildingsFactory> */
-    use HasFactory;
+    protected $fillable = [
+        'name',
+        'location',
+        'floors',
+        'building_code',
+    ];
 }
